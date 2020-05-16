@@ -16,12 +16,14 @@ We were especially interested in planners that can navigate around obstacles, so
 
 ### Baseline Tests
 
-We began with a basic implementation of RRT with motion primitives, uniformly sampling the space. This is the initial set of motion primitives we used:
+We began with a basic implementation of RRT with motion primitives, uniformly sampling the space. 
+
+#### Motion Primitives
 
 <img src="media/motionprimitives.png" alt="motion primitives"
 	width="450"/>
 
-Sample result after running RRT for 200 iterations:
+#### Results
 
 <img src="media/uniformsampling_2.gif" alt="200 iterations of RRT"
 	width="450"/>
@@ -42,9 +44,7 @@ Next, we turned to path-biased sampling approaches. These entail a two-step appr
 #### Step 2: Path-biased RRT* 
 <img src="media/pathsampling_1_1_1.gif" alt="200 iterations of RRT star"
 	width="450"/>
-<img src="media/pathsampling_1_1_2.gif" alt="200 iterations of RRT star"
-	width="450"/>
-<img src="media/pathsampling_1_2_2" alt="200 iterations of RRT star"
+<img src="media/pathsampling_1_2_2.gif" alt="200 iterations of RRT star"
 	width="450"/>
 
 ### Hierarchical Motion Primitives
@@ -74,5 +74,6 @@ Finally, we aimed to make improvements through the selection of motion primitive
 Rebecca is a 4th year undergraduate student at UC Berkeley studing Electrical Engineering & Computer Science. Rebecca is an undergraduate research fellow at the Berkeley Center for New Media.
 
 ### Evan Lohn
+Evan is a 4th year undergaduate student at UC Berkeley studying Electrical Engineering & Computer Science. He is interested in machine learning. 
 
 
