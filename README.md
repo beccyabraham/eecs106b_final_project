@@ -8,15 +8,17 @@ We review a breadth of literature related to non-holonomic motion planning metho
 
 
 ## Experimentation and Results
-To demonstrate potential advantages of different approaches to dynamically-feasible path planning around obstacles for non-holonomic systems, we implemented some of the algorithms we found during review and compared the results qualitatively. Our simulations were created by extending the RRT implementations within the Python Robotics package.
+To demonstrate potential advantages of different approaches to dynamically-feasible path planning around obstacles for non-holonomic systems, we implemented some of the algorithms we found during review and compared the results qualitatively. Our simulations were created by extending the RRT implementations within the Python Robotics package. We planned for the unicycle model, chainging together dynamically feasible motion primitives to ensure dynamic feasiblity. 
 
 We were especially interested in planners that can navigate around obstacles, so we chose two layouts to run our tests on.
 1. Placing the goal within a U-shaped obstacle so that the agent needs to find the opening of the U
 2. Positioning obstacles that require the agent to navigate through narrow openings to reach the goal
 
+### Baseline Tests
+
 We began with a basic implementation of RRT with motion primitives, uniformly sampling the space. This is the initial set of motion primitives we used:
 
-<img src="media/motionprimtives.png" alt="motion primitives"
+<img src="media/motionprimitives.png" alt="motion primitives"
 	width="450"/>
 
 Sample result after running RRT for 200 iterations:
@@ -27,7 +29,45 @@ Sample result after running RRT for 200 iterations:
 <img src="media/rrtmap1.png" alt="Result image"
 	width="450"/>
 
-Next, we turned to path-biased sampling approaches. These entail first pre-generating a dynamically infeasible path and then running RRT, biasing samples towards points along the pre-generated path. 
+### Path-biased Sampling
+
+Next, we turned to path-biased sampling approaches. These entail a two-step approach: first pre-generating a dynamically infeasible path and then running RRT, biasing samples towards points along the pre-generated path. Our implementation used vanilla RRT* to pre-generate a path, though any variant could be used for faster convergence. Then, we ran RRT with the same set of motion primitives, sampling randomly from the length of the pregenerated path. 
+
+#### Step 1: RRT*
+<img src="media/rrtstar_1.gif" alt="200 iterations of RRT star"
+	width="450"/>
+<img src="media/rrtstar_2.gif" alt="200 iterations of RRT star"
+	width="450"/>
+
+#### Step 2: Path-biased RRT* 
+<img src="media/pathsampling_1_1_1.gif" alt="200 iterations of RRT star"
+	width="450"/>
+<img src="media/pathsampling_1_1_2.gif" alt="200 iterations of RRT star"
+	width="450"/>
+<img src="media/pathsampling_1_2_2" alt="200 iterations of RRT star"
+	width="450"/>
+
+### Hierarchical Motion Primitives
+
+Finally, we aimed to make improvements through the selection of motion primitives. Vukosavljev et al use a hierarchical framework for motion planning of multiple quadcoptors in a cluttered environment. In an attempt to make our motion primitive set more robust, we start with a subset of our original set of motion primitives (Level 0) and concatenate them pairwise to form a Level 1 set. Then, we us the same two-step planning scheme as above, but select from all the Level 0 and Level 1 primitives.
+
+#### Motion Primitives
+<img src="media/hierarchical.png" alt="Hierarchical primitives"
+	width="450"/>
+
+#### Results
+<img src="media/pathsampling_2_1_1.gif" alt="200 iterations of RRT"
+	width="450"/>
+
+<img src="media/pathsampling_2_1_2.gif" alt="200 iterations of RRT"
+	width="450"/>
+
+<img src="media/pathsampling_2_2_1.gif" alt="200 iterations of RRT"
+	width="450"/>
+
+<img src="media/pathsampling_2_2_2.gif" alt="200 iterations of RRT"
+	width="450"/>
+
 
 ## Team Bios
 ### Rebecca Abraham
