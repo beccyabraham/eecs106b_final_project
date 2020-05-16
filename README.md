@@ -5,8 +5,7 @@
 We review a breadth of literature related to non-holonomic motion planning methods, then provide a deep analysis of current solutions to near-optimal sample-based planning with obstacles with the RRT* algorithm. We suggest a method for achieving the desirable properties of RRT* while achieving dynamical feasibility of generated paths in non-holonomic systems.
 
 ## Literature Review
-Please refer to our full paper for more detail and references. 
-
+Please refer to our [full paper](/FinalReport.pdf) for more detail and references. 
 
 ## Experimentation and Results
 To demonstrate potential advantages of different approaches to dynamically-feasible path planning around obstacles for non-holonomic systems, we implemented some of the algorithms we found during review and compared the results qualitatively. Our simulations were created by extending the RRT implementations within the Python Robotics package [1]. We planned for the unicycle model, chainging together dynamically feasible motion primitives to ensure dynamic feasiblity. 
