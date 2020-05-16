@@ -3,7 +3,9 @@
 ## Literature Review
 
 ## Experimentation
-![Farmers Market Finder Demo](media/pathsampling_2_1_1.gif)
+![Path Sampling Example](media/pathsampling_2_1_1.gif)
+<img src="media/pathsampling_2_1_1.gif" alt="Path Sampling"
+	width="150" height="100" />
 
 ## Team Bios
 ### Rebecca Abraham
